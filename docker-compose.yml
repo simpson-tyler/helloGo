@@ -1,0 +1,25 @@
+version: '3.5'
+
+services:
+  postgres:
+    container_name: postgres_example
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: my_password
+      PGDATA: /data/postgres
+    volumes:
+       - postgres-db:/data/postgres
+    ports:
+      - "5432:5432"
+  app:
+    build: .
+    command: ["go", "run", "hello.go"]
+    volumes:
+      - .:/go/src/app
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres-db:
+    driver: local
