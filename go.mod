@@ -2,9 +2,13 @@ module helloGo
 
 go 1.20
 
-require rsc.io/quote v1.5.2
+require (
+	github.com/golang-migrate/migrate/v4 v4.15.2
+	github.com/lib/pq v1.10.7
+)
 
 require (
-	golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c // indirect
-	rsc.io/sampler v1.3.0 // indirect
+	github.com/hashicorp/errwrap v1.1.0 // indirect
+	github.com/hashicorp/go-multierror v1.1.1 // indirect
+	go.uber.org/atomic v1.7.0 // indirect
 )

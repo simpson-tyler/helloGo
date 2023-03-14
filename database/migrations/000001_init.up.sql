@@ -1,4 +1,6 @@
-CREATE TABLE apples
+BEGIN;
+
+CREATE TABLE IF NOT EXISTS apples
 (
 	id BIGINT PRIMARY KEY,
 	color VARCHAR(50),
@@ -7,11 +9,13 @@ CREATE TABLE apples
 	tree_id BIGINT NOT NULL
 );
 
-CREATE TABLE trees
+CREATE TABLE IF NOT EXISTS trees
 (
 	id BIGINT PRIMARY KEY,
-	date_of_planting TIMESTAMP NOT NULL
+	date_of_planting TIMESTAMP NOT NULL,
 	name VARCHAR(50) NOT NULL
 );
 
-ALTER TABLE trees ADD FOREIGN KEY (tree_id) REFERENCES trees (id);
+ALTER TABLE apples ADD FOREIGN KEY (tree_id) REFERENCES trees (id);
+
+COMMIT;
