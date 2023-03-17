@@ -5,12 +5,12 @@ import (
 )
 
 // Taken from a great blog post: https://go.dev/blog/error-handling-and-go
-type appError struct {
+type AppError struct {
 	Error   error
 	Message string
 	Code    int
 }
-type appHandler func(http.ResponseWriter, *http.Request) *appError
+type appHandler func(http.ResponseWriter, *http.Request) *AppError
 
 func (fn appHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if e := fn(w, r); e != nil { // e is *appError, not os.Error.

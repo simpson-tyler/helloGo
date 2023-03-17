@@ -8,12 +8,7 @@ import (
 	"gorm.io/gorm"
 )
 
-type DbConfiguration struct {
-	// These Env variables are added in the Docker container
-
-}
-
-func getDbConnection() {
+func GetDbConnection() (*gorm.DB, error) {
 	dbUsername := os.Getenv("postgres_username")
 	dbPassword := os.Getenv("postgres_password")
 	dbHost := os.Getenv("postgres_host")
@@ -22,5 +17,5 @@ func getDbConnection() {
 
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=Asia/Shanghai", dbHost, dbUsername, dbPassword, dbName, dbPort)
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-
+	return db, err
 }
