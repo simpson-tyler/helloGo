@@ -1,7 +1,7 @@
 package model
 
 import (
-	"helloGo/database/connection"
+	"helloGo/internal/database/connection"
 )
 
 func FetchAppleByID(id uint) (*Apple, error) {

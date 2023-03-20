@@ -14,7 +14,7 @@ services:
       - "5432:5432"
   app:
     build: .
-    command: ["go", "run", "hello.go"]
+    command: ["go", "run", "helloGo/cmd"]
     volumes:
       - .:/go/src/app
     ports:

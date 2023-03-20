@@ -2,14 +2,14 @@ package api
 
 import (
 	"encoding/json"
-	"helloGo/model"
+	"helloGo/internal/model"
 	"net/http"
 	"strconv"
 
 	"github.com/gorilla/mux"
 )
 
-func handleApples(w http.ResponseWriter, r *http.Request) *AppError {
+func HandleApples(w http.ResponseWriter, r *http.Request) *AppError {
 	switch r.Method {
 	case http.MethodGet:
 		vars := mux.Vars(r)
@@ -37,6 +37,6 @@ func handleApples(w http.ResponseWriter, r *http.Request) *AppError {
 	return nil
 }
 
-func handleTrees(w http.ResponseWriter, r *http.Request) *AppError {
+func HandleTrees(w http.ResponseWriter, r *http.Request) *AppError {
 	return &AppError{http.ErrNotSupported, "Not Supported!", 500}
 }

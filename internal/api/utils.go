@@ -10,9 +10,9 @@ type AppError struct {
 	Message string
 	Code    int
 }
-type appHandler func(http.ResponseWriter, *http.Request) *AppError
+type AppHandler func(http.ResponseWriter, *http.Request) *AppError
 
-func (fn appHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func (fn AppHandler) CustomServeHttp(w http.ResponseWriter, r *http.Request) {
 	if e := fn(w, r); e != nil { // e is *appError, not os.Error.
 		http.Error(w, e.Message, e.Code)
 	}
